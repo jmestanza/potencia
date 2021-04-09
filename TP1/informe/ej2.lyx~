@@ -145,6 +145,15 @@ En este circuito, además de los componentes básicos de una fuente en configura
 Duty Cycle - ideal vs simulado
 \end_layout
 
+\begin_layout Standard
+\begin_inset Graphics
+	filename imagenes/pegado1.png
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Simulación de curvas - switch modelado 
 \begin_inset Quotes eld

@@ -146,11 +146,63 @@ Duty Cycle - ideal vs simulado
 \end_layout
 
 \begin_layout Standard
+Para un primer análisis se propone establecer la relación entre tensiones
+ de entrada y salida dada por el duty cycle.
+\end_layout
+
+\begin_layout Standard
+Para esto se analizan los circuitos resultantes a partir del estado ON/OFF
+ de la llave.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
 \begin_inset Graphics
-	filename imagenes/pegado1.png
+	filename imagenes/hemiOFF.PNG
+	scale 40
 
 \end_inset
 
+
+\begin_inset Graphics
+	filename imagenes/hemiON.PNG
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Izquierda: OFF - Derecha: ON
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Para los hemicircuitos que se muestran, se considera la bobina sin pérdidas,
+ y el diodo y llave ideales.
+\end_layout
+
+\begin_layout Standard
 
 \end_layout
 
@@ -161,6 +213,15 @@ Simulación de curvas - switch modelado
 
 MYSW
 \begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename imagenes/pegado1.png
+
 \end_inset
 
 
