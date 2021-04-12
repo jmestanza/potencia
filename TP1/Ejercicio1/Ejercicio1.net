@@ -1,0 +1,16 @@
+* C:\potencia\TP1\Ejercicio1\Ejercicio1.asc
+L1 N002 D 200µ
+D1 D N001 MUR460
+R1 G GG 100
+R2 N002 N001 1
+V2 N001 0 12
+V1 GG 0 PULSE(0 12 0 1n 1n 10u 20u)
+M1 D G 0 0 IRF530
+.model D D
+.lib C:\Users\joa-m\Documents\LTspiceXVII\lib\cmp\standard.dio
+.model NMOS NMOS
+.model PMOS PMOS
+.lib C:\Users\joa-m\Documents\LTspiceXVII\lib\cmp\standard.mos
+.tran 0 0.002 0.001 1n
+.backanno
+.end
