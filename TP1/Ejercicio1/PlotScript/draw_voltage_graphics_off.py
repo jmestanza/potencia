@@ -33,7 +33,6 @@ ig = VGSIO/Rg #chequeada ig con la simulacion
 t_rv = deltaq/ig 
 print("t_rv= ",t_rv*1e9,"ns")
 
-Ciss_second = 1140e-12
 # otra forma es Rg*(Cgd2+Cgs)
 tau_2 = Rg*Ciss_second
 print(tau_2*1e9)
