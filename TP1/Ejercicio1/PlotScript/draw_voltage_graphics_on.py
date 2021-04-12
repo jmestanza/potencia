@@ -1,5 +1,4 @@
 from utils import *
-from constants import *
 
 filename = 'voltages_sim_data.txt'
 data = read_spice_data(filename)
