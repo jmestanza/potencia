@@ -1,62 +1,25 @@
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-from scipy.signal import find_peaks
+from utils import *
 
-from matplotlib.ticker import EngFormatter
+filename = 'voltages_sim_data.txt'
+data = read_spice_data(filename)
+json_filename = 'datasheet_and_constants.json'
+const = read_json_data(json_filename)
+
+Rg = const["circuit"]["Rg"]
+VGG = const["circuit"]["VGG"]
+io = const["circuit"]["io"]
 
 
-def get_last_pos_edge_idx(x, time, peak_height = 2, plot_peaks=False):
-    peaks, _ = find_peaks(x, height=peak_height)
-    if(plot_peaks):
-        plt.plot(time, x)
-        plt.plot(time[peaks], x[peaks], "x")
-    return peaks[-1]
+VDSMAX = const["datasheet"]["VDSMAX"]
+VGSIO = const["datasheet"]["VGSIO"]
+Ciss_first = const["datasheet"]["Ciss_first"]
+Ciss_second = const["datasheet"]["Ciss_second"]
+Cgd1 = const["datasheet"]["Cgd1"]
+Cgd2 = const["datasheet"]["Cgd2"]
+deltaq = const["datasheet"]["deltaq"]
+VGSTH = const["datasheet"]["VGSTH"]
 
-def get_right_index_till_time(time, center_idx, t_sw):
-    curr_time_idx = center_idx
-    while(time[curr_time_idx]-time[center_idx] <= t_sw):
-        curr_time_idx += 1
-    return curr_time_idx
-
-def get_left_index_till_time(time, center_idx, t_sw):
-    curr_time_idx = center_idx
-    while(time[center_idx] - time[curr_time_idx] <= t_sw):
-        curr_time_idx -= 1
-    return curr_time_idx
-
-def get_synchronization_data(time, sync_signal, t_left, t_right):
-    either_edges = np.diff(sync_signal)
-    center_idx = get_last_pos_edge_idx(either_edges,time=time[:-1], plot_peaks=False)
-    left_idx = get_left_index_till_time(time, center_idx, t_left)
-    right_idx = get_right_index_till_time(time, center_idx, t_right)
-    return center_idx, left_idx, right_idx
-
-def plot_point(index, time, signal, color):
-    x = time[index]
-    y = signal[index]
-    plt.plot([x], [y], 'o', color=color, ms=6)
-    plt.text(x, y, "{:0.2f}ns".format(x*1e9))
-
-filename = 'voltages_on.txt'
-
-data_info = pd.read_csv(filename, sep ='\t', header = 0)
-data = {}
-for col in data_info.columns:
-    data[col] = np.array(data_info[col].tolist())
-    
-Rg = 100 # con Rg = 115, daba bastante bien... debe ser que cambia la R pero no se porque
-VDSMAX = 13
-VGSIO = 5.4
-VGG = 12
-VGSTH = 4 
-Ciss_first = 700e-12
-deltaq = 5.5e-9
-Cgd1 = 70e-12
 Cgs = Ciss_first-Cgd1
-
-Cgd2 = 500e-12
-
 tau_1 = Rg*Ciss_first
 
 ig = VGSIO/Rg #chequeada ig con la simulacion
@@ -112,24 +75,19 @@ init_time = 60e-9 # lo ajuste a mano, era mas facil q calcularlo
 end_curve_3 = get_right_index_till_time(time, end_curve_2, 3*tau_2)
 vgg_curve_3 = VGG*(np.exp(-(time[end_curve_2: end_curve_3]- time[end_curve_2] + init_time)/tau_1))
 
-vgg_curve = np.hstack((vgg_curve_0,vgg_curve_1))
-vgg_curve = np.hstack((vgg_curve,vgg_curve_2))
-vgg_curve = np.hstack((vgg_curve,vgg_curve_3))
+vgg_teo = np.hstack((vgg_curve_0,vgg_curve_1,vgg_curve_2,vgg_curve_3))
+time_teo = shifted_time[:len(vgg_teo)]
 
-time_teo = shifted_time[:len(vgg_curve)]
-vgg_teo = vgg_curve
 plt.plot(time_teo,vgg_teo, label='Vgs (teo)')
 
-
-plot_point(index=50, time=time_teo, signal=vgs_plot, color='orange') # este hay que ver corriente
+plot_point(index=50, time=time_teo, signal=vgs_plot, color='orange')
 plot_point(index=114, time=time_teo, signal=vgs_plot, color='orange')
 plot_point(index=141, time=time_teo, signal=vgs_plot, color='orange')
 
 plt.grid()
 
-formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  # U+2009
+formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  
 ax = plt.gca()
 plt.gca().xaxis.set_major_formatter(formatter1)
-# plt.grid(which='both')
 plt.legend()
 plt.show()
