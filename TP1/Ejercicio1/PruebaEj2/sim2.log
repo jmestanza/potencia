@@ -1,0 +1,21 @@
+Circuit: * C:\potencia\TP1\Ejercicio2\sim2.asc
+
+Direct Newton iteration for .op point succeeded.
+
+Date: Sun Apr 11 22:22:51 2021
+Total elapsed time: 0.520 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 372455
+traniter = 372450
+tranpoints = 137397
+accept = 107329
+rejected = 30068
+matrix size = 8
+fillins = 0
+solver = Normal
+Matrix Compiler1: 246 bytes object code size  0.0/0.0/[0.0]
+Matrix Compiler2: off  [0.0]/0.1/0.1
+

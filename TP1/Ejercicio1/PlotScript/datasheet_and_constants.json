@@ -1,0 +1,17 @@
+{
+    "circuit":{
+       "Rg": 100,
+       "VGG":12,
+       "io":5.345
+    },
+    "datasheet":{
+        "VDSMAX":13,
+        "VGSIO":5.4,      
+        "VGSTH":4,
+        "Ciss_first":700e-12,
+        "Ciss_second":1140e-12,
+        "deltaq":5.5e-9,
+        "Cgd1":70e-12,
+        "Cgd2":70e-12
+    }
+}
