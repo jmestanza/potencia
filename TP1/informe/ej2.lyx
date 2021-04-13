@@ -85,7 +85,7 @@ En este item se propone
 
 \begin_layout Standard
 el análisis y simulación del siguiente circuito que se corresponde con una
- fuente BUCK:
+ fuente BOOST:
 \end_layout
 
 \begin_layout Standard
@@ -93,7 +93,7 @@ el análisis y simulación del siguiente circuito que se corresponde con una
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
@@ -110,7 +110,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Circuito item 2 - fuente BUCK
+Circuito item 2 - fuente BOOST
 \end_layout
 
 \end_inset
@@ -152,7 +152,8 @@ Para un primer análisis se propone establecer la relación entre tensiones
 
 \begin_layout Standard
 Para esto se analizan los circuitos resultantes a partir del estado ON/OFF
- de la llave.
+ de la llave, obviando el tiempo transitorio hasta que se establece la tensión
+ de salida y suponiendo que la bobina nunca se queda sin energía.
 \end_layout
 
 \begin_layout Standard
@@ -160,20 +161,20 @@ Para esto se analizan los circuitos resultantes a partir del estado ON/OFF
 placement H
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename imagenes/hemiOFF.PNG
-	scale 40
+	scale 45
 
 \end_inset
 
 
 \begin_inset Graphics
 	filename imagenes/hemiON.PNG
-	scale 50
+	scale 45
 
 \end_inset
 
@@ -203,7 +204,73 @@ Para los hemicircuitos que se muestran, se considera la bobina sin pérdidas,
 \end_layout
 
 \begin_layout Standard
+En primer lugar cuando la llave está apagada sucede que la bobina se carga
+ por 
+\begin_inset Formula $"V_{2}"$
+\end_inset
 
+, y por ella circula corriente que se dirije hacia la carga y hacia el capacitor.
+ En este estado la tensión en la bobina es 
+\begin_inset Formula $V_{L}=V_{2}-V_{OUT}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+En el circuito con la llave encendida, la tensión de la salida se mantiene
+ constante debido a que el capacitor entrega la corriente necesaria a la
+ carga.
+ En cuanto a la tensión en la bobina, es 
+\begin_inset Formula $V_{L}=V_{2}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Entonces si se llama 
+\begin_inset Formula $"D"$
+\end_inset
+
+ al duty cycle (tiempo en alto de la llave en cada ciclo periodico) y 
+\begin_inset Formula $"T"$
+\end_inset
+
+ al período, se puede obtener la relación entre tensión de entrada y salida
+ planteando que el producto Volt.segundo de la bobina es igual a cero:
+\end_layout
+
+\begin_layout Standard
+Esto es: 
+\begin_inset Formula $V_{2}.T.D+(V_{2}-V_{OUT}).T.(1-D)=0\Rightarrow V_{2}.T.D=(V_{OUT}-V_{2}).T.(1-D)\Rightarrow V_{OUT}=\frac{V_{2}}{1-D}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Así se obtiene el efecto 
+\begin_inset Quotes eld
+\end_inset
+
+Step Up
+\begin_inset Quotes erd
+\end_inset
+
+ o Boost, ya que 
+\begin_inset Formula $D$
+\end_inset
+
+ es un valor entre 0 y 1.
+\end_layout
+
+\begin_layout Standard
+Con un dutycycle de 50% se obtiene idealmente entonces 
+\begin_inset Formula $V_{OUT}=24V$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsection
