@@ -19,7 +19,6 @@ Cgd2 = const["datasheet"]["Cgd2"]
 deltaq = const["datasheet"]["deltaq"]
 VGSTH = const["datasheet"]["VGSTH"]
 
-Cgs = Ciss_first-Cgd1
 tau_1 = Rg*Ciss_first
 
 ig = VGSIO/Rg #chequeada ig con la simulacion
@@ -33,14 +32,10 @@ ig = VGSIO/Rg #chequeada ig con la simulacion
 t_rv = deltaq/ig 
 print("t_rv= ",t_rv*1e9,"ns")
 
-# otra forma es Rg*(Cgd2+Cgs)
 tau_2 = Rg*Ciss_second
-print(tau_2*1e9)
-tau_2 = Rg*(Cgd2+Cgs)
-print(tau_2*1e9)
 
 t_left = 0.1e-9
-t_right = 0.8e-6
+t_right = 600e-9
 
 # ltspice no tiene intervalos de tiempo uniforme asi que tengo que buscar los indices para +/- un tiempo
 start,l, r = get_synchronization_data(data['time'],-data['V(gg)'], t_left, t_right)
@@ -60,7 +55,7 @@ plt.plot(shifted_time,vgs_plot, label='Vgs (sim)')
 plt.plot(shifted_time,vds_plot, label='Vds (sim)')
 
 end_curve_0 = start
-vgg_curve_0 = np.zeros((end_curve_0-l))
+vgg_curve_0 = VGG * np.ones((end_curve_0-l))
 
 td_off = -tau_2*np.log(VGSIO/VGG)
 
@@ -70,9 +65,8 @@ vgg_curve_1 = VGG*(np.exp(-(time[end_curve_0:end_curve_1] - time[end_curve_0])/t
 end_curve_2 = get_right_index_till_time(time, end_curve_1, t_rv)
 vgg_curve_2 = np.ones((end_curve_2-end_curve_1))*VGSIO
 
-init_time = 60e-9 # lo ajuste a mano, era mas facil q calcularlo
-end_curve_3 = get_right_index_till_time(time, end_curve_2, 3*tau_2)
-vgg_curve_3 = VGG*(np.exp(-(time[end_curve_2: end_curve_3]- time[end_curve_2] + init_time)/tau_1))
+end_curve_3 = get_right_index_till_time(time, end_curve_2, 5*tau_1)
+vgg_curve_3 = VGSIO*(np.exp(-(time[end_curve_2: end_curve_3]- time[end_curve_2])/tau_1))
 
 vgg_teo = np.hstack((vgg_curve_0,vgg_curve_1,vgg_curve_2,vgg_curve_3))
 time_teo = shifted_time[:len(vgg_teo)]
@@ -83,10 +77,13 @@ plot_point(index=50, time=time_teo, signal=vgs_plot, color='orange')
 plot_point(index=114, time=time_teo, signal=vgs_plot, color='orange')
 plot_point(index=141, time=time_teo, signal=vgs_plot, color='orange')
 
-plt.grid()
-
-formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  
+formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  # U+2009
 ax = plt.gca()
 plt.gca().xaxis.set_major_formatter(formatter1)
+plt.gca().xaxis.set_minor_locator(AutoMinorLocator())
+plt.gca().yaxis.set_minor_locator(AutoMinorLocator())
+plt.grid(which="major",alpha=0.8)
+plt.grid(which="minor",alpha=0.3)
+
 plt.legend()
 plt.show()

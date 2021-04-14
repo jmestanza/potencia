@@ -42,7 +42,7 @@ print("t_fv1= ",t_fv1*1e9,"ns")
 tau_2 = Rg*Ciss_second
 
 t_left = 0.1e-9
-t_right = 0.5e-6
+t_right = 300e-9
 
 # ltspice no tiene intervalos de tiempo uniforme asi que tengo que buscar los indices para +/- un tiempo
 start,l, r = get_synchronization_data(data['time'],data['V(gg)'], t_left, t_right)
@@ -73,7 +73,7 @@ vgg_curve_1 = VGG*(1-np.exp(-(time[end_curve_0:end_curve_1] - time[end_curve_0])
 end_curve_2 = get_right_index_till_time(time, end_curve_1, t_fv)
 vgg_curve_2 = np.ones((end_curve_2-end_curve_1))*VGSIO
 print(end_curve_2)
-end_curve_3 = get_right_index_till_time(time, end_curve_2, 3*tau_2)
+end_curve_3 = get_right_index_till_time(time, end_curve_2, 1.4*tau_2)
 print(end_curve_3)
 
 init_time = -tau_2*np.log(1-VGSIO/VGG)
@@ -94,10 +94,14 @@ plot_point(index=37, time=time_teo, signal=vgs_plot, color='orange')
 plot_point(index=65, time=time_teo, signal=vgs_plot, color='orange')
 plot_point(index=114, time=time_teo, signal=vgs_plot, color='orange')
 
-plt.grid()
 
 formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  # U+2009
 ax = plt.gca()
 plt.gca().xaxis.set_major_formatter(formatter1)
+plt.gca().xaxis.set_minor_locator(AutoMinorLocator())
+plt.gca().yaxis.set_minor_locator(AutoMinorLocator())
+plt.grid(which="major",alpha=0.8)
+plt.grid(which="minor",alpha=0.3)
+
 plt.legend()
 plt.show()
