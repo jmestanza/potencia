@@ -46,7 +46,7 @@ print(tau_2*1e9)
 td_off = -tau_2*np.log(VGSIO/VGG)
 
 t_left = 0.1e-9
-t_right = 500e-9
+t_right = 415e-9
 
 # ltspice no tiene intervalos de tiempo uniforme asi que tengo que buscar los indices para +/- un tiempo
 start,l, r = get_synchronization_data(data['time'],-data['V(gg)'], t_left, t_right)

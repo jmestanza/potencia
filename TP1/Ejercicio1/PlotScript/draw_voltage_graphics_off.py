@@ -35,7 +35,8 @@ print("t_rv= ",t_rv*1e9,"ns")
 tau_2 = Rg*Ciss_second
 
 t_left = 0.1e-9
-t_right = 600e-9
+# t_right = 400e-9
+t_right = 415e-9
 
 # ltspice no tiene intervalos de tiempo uniforme asi que tengo que buscar los indices para +/- un tiempo
 start,l, r = get_synchronization_data(data['time'],-data['V(gg)'], t_left, t_right)
@@ -58,6 +59,7 @@ end_curve_0 = start
 vgg_curve_0 = VGG * np.ones((end_curve_0-l))
 
 td_off = -tau_2*np.log(VGSIO/VGG)
+print("td_off", td_off*1e9, "ns")
 
 end_curve_1 = get_right_index_till_time(time, end_curve_0, td_off)
 vgg_curve_1 = VGG*(np.exp(-(time[end_curve_0:end_curve_1] - time[end_curve_0])/tau_2))
@@ -65,7 +67,7 @@ vgg_curve_1 = VGG*(np.exp(-(time[end_curve_0:end_curve_1] - time[end_curve_0])/t
 end_curve_2 = get_right_index_till_time(time, end_curve_1, t_rv)
 vgg_curve_2 = np.ones((end_curve_2-end_curve_1))*VGSIO
 
-end_curve_3 = get_right_index_till_time(time, end_curve_2, 5*tau_1)
+end_curve_3 = get_right_index_till_time(time, end_curve_2, 2*tau_1)
 vgg_curve_3 = VGSIO*(np.exp(-(time[end_curve_2: end_curve_3]- time[end_curve_2])/tau_1))
 
 vgg_teo = np.hstack((vgg_curve_0,vgg_curve_1,vgg_curve_2,vgg_curve_3))
