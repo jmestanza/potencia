@@ -103,5 +103,8 @@ plt.gca().yaxis.set_minor_locator(AutoMinorLocator())
 plt.grid(which="major",alpha=0.8)
 plt.grid(which="minor",alpha=0.3)
 
+plt.ylabel('tensión (V)')
+plt.xlabel('tiempo (s)')
+
 plt.legend()
 plt.show()

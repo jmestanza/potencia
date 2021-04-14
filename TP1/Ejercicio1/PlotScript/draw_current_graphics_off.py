@@ -46,7 +46,7 @@ print(tau_2*1e9)
 td_off = -tau_2*np.log(VGSIO/VGG)
 
 t_left = 0.1e-9
-t_right = 400e-9
+t_right = 500e-9
 
 # ltspice no tiene intervalos de tiempo uniforme asi que tengo que buscar los indices para +/- un tiempo
 start,l, r = get_synchronization_data(data['time'],-data['V(gg)'], t_left, t_right)
@@ -94,6 +94,10 @@ time_teo = shifted_time[:len(id_teo)]
 plt.plot(time_teo,id_teo, label='Idrain (teo)')
 # plt.plot(shifted_time,vgg_plot, label='Idrain (teo)')
 
+# plt.arrow(0, 1, td_off, 0, head_width=0.04, head_length=td_off/10, linewidth=1, color='black', length_includes_head=True)
+# plt.annotate('', xy=(0,1), xytext=(td_off,1), xycoords='axes fraction', arrowprops=dict(arrowstyle='<->'))
+# plt.annotate('hola', xy=(0,1), xytext=(0,1), xycoords='data', arrowprops=dict(arrowstyle='<->'), annotation_clip = None)
+
 plot_point(index=50, time=shifted_time, signal=id_plot, color='blue') 
 plot_point(index=114, time=shifted_time, signal=id_plot, color='blue')
 plot_point(index=141, time=shifted_time, signal=id_plot, color='blue')
@@ -106,6 +110,10 @@ plt.gca().xaxis.set_minor_locator(AutoMinorLocator())
 plt.gca().yaxis.set_minor_locator(AutoMinorLocator())
 plt.grid(which="major",alpha=0.8)
 plt.grid(which="minor",alpha=0.3)
+
+plt.ylabel('corriente (A)')
+plt.xlabel('tiempo (s)')
+
 
 plt.legend()
 plt.show()
