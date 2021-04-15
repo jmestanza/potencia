@@ -1,22 +1,21 @@
-Circuit: * C:\Users\user\Documents\ITBA\Quinto\Segundo cuatrimestre\Potencia\Trabajos practicos\potencia\TP1\Ejercicio3\3a.asc
+Circuit: * C:\Users\Manuel Mollon\Dropbox\potencia\TP1\Ejercicio3\3a.asc
 
-Warning: Multiple definitions of model "aons66402" Type: Vdmos1
 Direct Newton iteration for .op point succeeded.
 
-Date: Wed Apr 14 20:02:52 2021
-Total elapsed time: 18.637 seconds.
+Date: Thu Apr 15 18:14:28 2021
+Total elapsed time: 23.051 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 4619493
-traniter = 4619487
-tranpoints = 2006474
-accept = 2004770
-rejected = 1704
-matrix size = 13
-fillins = 1
-solver = Normal
-Matrix Compiler1: 594 bytes object code size  0.1/0.1/[0.1]
-Matrix Compiler2: 939 bytes object code size  0.1/0.1/[0.1]
+totiter = 1619677
+traniter = 1619662
+tranpoints = 805839
+accept = 804046
+rejected = 1793
+matrix size = 22
+fillins = 9
+solver = Alternate
+Matrix Compiler1: 1.80 KB object code size  0.6/0.4/[0.3]
+Matrix Compiler2: off  [0.3]/0.5/0.4
 
