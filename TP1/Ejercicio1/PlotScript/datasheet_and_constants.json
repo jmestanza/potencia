@@ -1,8 +1,10 @@
 {
     "circuit":{
-       "Rg": 100,
+       "Rg": 115,
        "VGG":12,
-       "io":5.345
+       "io":5.345,
+       "iomax":5.51,
+       "iomin":5.18
     },
     "datasheet":{
         "VDSMAX":13,
@@ -12,6 +14,6 @@
         "Ciss_second":1140e-12,
         "deltaq":5.5e-9,
         "Cgd1":70e-12,
-        "Cgd2":70e-12
+        "Cgd2":500e-12
     }
 }

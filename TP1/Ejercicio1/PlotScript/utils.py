@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.signal import find_peaks
 import json
-
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 from matplotlib.ticker import EngFormatter
 
 
@@ -36,8 +36,8 @@ def get_synchronization_data(time, sync_signal, t_left, t_right):
 def plot_point(index, time, signal, color):
     x = time[index]
     y = signal[index]
-    plt.plot([x], [y], 'o', color=color, ms=6)
-    plt.text(x, y, "{:0.2f}ns".format(x*1e9))
+    plt.plot([x], [y], 'o', color=color, ms=4)
+    plt.text(x, y, "{:0.2f}".format(x*1e9), size = 7)
 
 def read_spice_data(filename):
     data_info = pd.read_csv(filename, sep ='\t', header = 0)

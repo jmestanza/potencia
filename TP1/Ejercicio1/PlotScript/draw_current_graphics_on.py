@@ -57,7 +57,7 @@ iL_plot = data['I(L1)'][l:r]
 iD1_plot = data['I(D1)'][l:r]   
 
 
-visual_time_shift = time_plot[0] # hay que ver que poner aca, 480e-6
+visual_time_shift = time_plot[0] 
 shifted_time = time_plot-visual_time_shift
 
 plt.plot(shifted_time,id_plot, label='IDrain (sim)')
@@ -92,14 +92,26 @@ plt.plot(time_teo,id_teo, label='id (teo)')
 
 print(np.searchsorted(id_plot, td_on))
 # Pongo los puntos en los puntos de interes.
-plot_point(index=14, time=time_teo, signal=id_plot, color='blue') 
-plot_point(index=37, time=time_teo, signal=id_plot, color='blue')
-plot_point(index=65, time=time_teo, signal=id_plot, color='blue')
 
-plt.grid()
+plot_point(index=14, time=shifted_time, signal=id_plot, color='blue')
+plot_point(index=37, time=shifted_time, signal=id_plot, color='blue') 
+plot_point(index=65, time=shifted_time, signal=id_plot, color='blue')
+# plot_point(index=114, time=time_teo, signal=id_plot, color='orange')
 
-formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")
+
+
+
+formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  # U+2009
 ax = plt.gca()
 plt.gca().xaxis.set_major_formatter(formatter1)
+plt.gca().xaxis.set_minor_locator(AutoMinorLocator())
+plt.gca().yaxis.set_minor_locator(AutoMinorLocator())
+plt.grid(which="major",alpha=0.8)
+plt.grid(which="minor",alpha=0.3)
+
+plt.ylabel('corriente (A)')
+plt.xlabel('tiempo (s)')
+
+
 plt.legend()
 plt.show()
