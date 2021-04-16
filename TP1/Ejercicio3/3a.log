@@ -2,20 +2,20 @@ Circuit: * C:\Users\Manuel Mollon\Dropbox\potencia\TP1\Ejercicio3\3a.asc
 
 Direct Newton iteration for .op point succeeded.
 
-Date: Tue Apr 13 00:10:59 2021
-Total elapsed time: 47.404 seconds.
+Date: Thu Apr 15 18:14:28 2021
+Total elapsed time: 23.051 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 4051771
-traniter = 4051756
-tranpoints = 2015794
-accept = 2010963
-rejected = 4831
+totiter = 1619677
+traniter = 1619662
+tranpoints = 805839
+accept = 804046
+rejected = 1793
 matrix size = 22
 fillins = 9
 solver = Alternate
-Matrix Compiler1: 1.80 KB object code size  0.5/0.4/[0.2]
-Matrix Compiler2: 1.97 KB object code size  0.3/0.4/[0.3]
+Matrix Compiler1: 1.80 KB object code size  0.6/0.4/[0.3]
+Matrix Compiler2: off  [0.3]/0.5/0.4
 
