@@ -19,6 +19,8 @@ Cgd2 = const["datasheet"]["Cgd2"]
 deltaq = const["datasheet"]["deltaq"]
 VGSTH = const["datasheet"]["VGSTH"]
 
+t_rr = const["circuit"]["t_rr"]
+
 
 
 Cgs = Ciss_first-Cgd1
@@ -35,7 +37,7 @@ t_fv = deltaq/ig
 print("t_fv= ",t_fv*1e9,"ns")
 
 
-t_fv1 = VDSMAX*(Rg*Cgd1)/(VGG-VGSIO)
+t_fv1 = VDSMAX/(ig/Cgd1)
 
 print("t_fv1= ",t_fv1*1e9,"ns")
 
@@ -73,7 +75,7 @@ vgg_curve_1 = VGG*(1-np.exp(-(time[end_curve_0:end_curve_1] - time[end_curve_0])
 end_curve_2 = get_right_index_till_time(time, end_curve_1, t_fv)
 vgg_curve_2 = np.ones((end_curve_2-end_curve_1))*VGSIO
 print(end_curve_2)
-end_curve_3 = get_right_index_till_time(time, end_curve_2, 1.4*tau_2)
+end_curve_3 = get_right_index_till_time(time, end_curve_2, 1.3*tau_2)
 print(end_curve_3)
 
 init_time = -tau_2*np.log(1-VGSIO/VGG)
@@ -108,3 +110,32 @@ plt.xlabel('tiempo (s)')
 
 plt.legend()
 plt.show()
+
+fsw = 1/20e-6
+
+irr = 19
+
+
+Pot_on_1 = ((t_rr+t_ri)* (irr)/2) * VDSMAX * fsw
+Pot_on_2 = (t_fv1 * VDSMAX/2) * io * fsw
+
+print("Pot_on_1 = ", Pot_on_1)
+print("Pot_on_2 = ", Pot_on_2)
+
+Pot_on = Pot_on_1  + Pot_on_2
+
+print("Pot_on = ", Pot_on)
+
+
+trv_sim = 127.52e-9
+Pot_off = fsw*trv_sim*io*VDSMAX/2
+print("Pot_off", Pot_off)
+
+print("Pot_off + Pot_on", Pot_on+Pot_off)
+
+integral = 6.2497e-6
+power1 = integral*fsw
+integral2 = 5.83e-6
+power2 = integral*fsw
+power = power1+power2
+print("Total Pot", power)
