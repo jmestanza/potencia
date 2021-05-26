@@ -3,17 +3,17 @@ Circuit: * C:\Users\user\Documents\ITBA\Quinto\Segundo cuatrimestre\Potencia\Tra
 Warning: Multiple definitions of model "aons66402" Type: Vdmos1
 Direct Newton iteration for .op point succeeded.
 
-Date: Sun May 23 16:44:14 2021
-Total elapsed time: 2.337 seconds.
+Date: Mon May 24 18:49:04 2021
+Total elapsed time: 4.272 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 698608
-traniter = 698576
-tranpoints = 225664
-accept = 216829
-rejected = 8835
+totiter = 1390402
+traniter = 1390371
+tranpoints = 424273
+accept = 381427
+rejected = 42846
 matrix size = 26
 fillins = 9
 solver = Normal
