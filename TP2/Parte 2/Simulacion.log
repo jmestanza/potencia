@@ -1,8 +1,8 @@
 Circuit: * C:\Users\user\Documents\ITBA\Quinto\Segundo cuatrimestre\Potencia\Trabajos practicos\potencia\TP2\Parte 2\Simulacion.asc
 
 Warning: Multiple definitions of model "aons66402" Type: Vdmos1
-C3: Increased Cpar to 1e-011
-C1: Increased Cpar to 1e-011
+C3: Increased Cpar to 4.7e-011
+C1: Increased Cpar to 4.7e-011
 WARNING: Specified period is not longer than the sum of Trise, Tfall, and Ton for v4.  Increasing period to 5.002e-006
 WARNING: Less than two connections to node NC_04.  This node is used by R:U2:8.
 WARNING: Less than two connections to node OSC.  This node is used by R:U2:18.
@@ -10,21 +10,21 @@ Direct Newton iteration for .op point succeeded.
 Ignoring empty pin current: Ix(u2:gnd)
 Ignoring empty pin current: Ix(u2:gnd)
 
-Date: Sat Jun 19 19:01:30 2021
-Total elapsed time: 8.307 seconds.
+Date: Mon Jun 21 19:35:54 2021
+Total elapsed time: 7.413 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 1114254
-traniter = 1114229
-tranpoints = 368573
-accept = 345865
-rejected = 22708
+totiter = 1172868
+traniter = 1172843
+tranpoints = 382898
+accept = 354934
+rejected = 27964
 matrix size = 74
 fillins = 7
 solver = Normal
-Thread vector: 3.5/3.1[2] 2.2/1.7[2] 0.3/0.8[1] 0.2/0.9[1]  2592/500
-Matrix Compiler1: 3.34 KB object code size  0.8/0.6/[0.3]
-Matrix Compiler2: 4.91 KB object code size  0.6/0.9/[0.4]
+Thread vector: 56.4/6.7[2] 3.2/3.3[1] 1.5/1.0[2] 0.2/1.2[1]  2592/500
+Matrix Compiler1: 3.34 KB object code size  1.1/0.8/[0.4]
+Matrix Compiler2: 4.91 KB object code size  0.7/1.2/[0.6]
 
