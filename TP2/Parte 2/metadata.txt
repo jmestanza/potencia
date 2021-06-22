@@ -1,0 +1,2 @@
+SimulacionAlazoAbierto = ["Vosc", "Vgate", "Vsecundario", "Vswitch", "Vprimario", "Vsalida"]
+
