@@ -4,7 +4,8 @@ from matplotlib.ticker import EngFormatter
 from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
 if __name__ == '__main__':
-    plots = read_json_data('plot_info.json')['plots']
+    json_data = read_json_data('plot_info.json')
+    plots = json_data['plots']
     for plot in plots:
         filename = plot['spice_filename']
         data_filename = 'resources/' + filename + '.txt'
@@ -14,14 +15,14 @@ if __name__ == '__main__':
         plt.title(plot['title'])
 
         fig, ax1 = plt.subplots()
-        fig.set_size_inches(tuple(plot['fig_size']))
+        fig.set_size_inches(tuple(json_data['fig_size']))
 
         # left y axis
         ax1.set_ylabel(plot['left_y_label'])
         ax1.set_xlabel(plot['x_label'])
         ax1.set_ylim(tuple(plot['left_y_limit']))
-        plt.grid(which="major", alpha=plot['major_tick_alpha'])
-        plt.grid(which="minor", alpha=plot['minor_tick_alpha'])
+        plt.grid(which="major", alpha=json_data['major_tick_alpha'])
+        plt.grid(which="minor", alpha=json_data['minor_tick_alpha'])
 
         formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  # U+2009
         plt.gca().xaxis.set_major_formatter(formatter1)
