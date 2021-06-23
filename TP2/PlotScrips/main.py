@@ -39,7 +39,7 @@ if __name__ == '__main__':
                 line = ax1.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
                 label = line.get_label()
             else:
-                if graphic['belongsToRightYAxis']:
+                if not graphic['belongsToRightYAxis']:
                     line = ax1.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
                     label = line.get_label()
                 else:
