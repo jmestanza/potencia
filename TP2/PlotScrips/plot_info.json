@@ -14,7 +14,7 @@
       "graphics": [
         {"spice_label": "Vsw","label": "Vsw", "belongsToRightYAxis": false, "linestyle": "-", "color": "r"},
         {"spice_label": "Vprimario","label": "Vprimario", "belongsToRightYAxis": false, "linestyle": "--", "color": "b"},
-        {"spice_label": "Iprimario","label": "Iprimario", "belongsToRightYAxis": true, "linestyle": "-", "color": "g"}
+        {"spice_label": "Iprimario","label": "Iprimario", "belongsToRightYAxis": true, "linestyle": "--", "color": "g"}
       ]
     },
     {
@@ -26,12 +26,12 @@
       "right_y_label": "Corriente (A)",
       "spice_time_label": "time",
       "x_limit": [480e-6,500e-6],
-      "left_y_limit": [-20,32],
-      "right_y_limit": [-0.2,1],
+      "left_y_limit": [-15,10],
+      "right_y_limit": [-0.2,3],
       "graphics": [
         {"spice_label": "Vsecundario","label": "Vsecundario", "belongsToRightYAxis": false, "linestyle": "-", "color": "r"},
         {"spice_label": "Vsalida","label": "Vsalida", "belongsToRightYAxis": false, "linestyle": "--", "color": "b"},
-        {"spice_label": "Isecundario","label": "Isecundario", "belongsToRightYAxis": true, "linestyle": "-", "color": "g"}
+        {"spice_label": "Isecundario","label": "Isecundario", "belongsToRightYAxis": true, "linestyle": "--", "color": "g"}
       ]
     }, 
     {
@@ -43,7 +43,7 @@
       "right_y_label": "Corriente (A)",
       "spice_time_label": "time",
       "x_limit": [480e-6,500e-6],
-      "left_y_limit": [-20,32],
+      "left_y_limit": [-15,15],
       "right_y_limit": [-0.2,1],
       "graphics": [
         {"spice_label": "Vgate","label": "Vgate", "belongsToRightYAxis": false, "linestyle": "-", "color": "r"},
@@ -59,7 +59,7 @@
       "right_y_label": "Corriente (A)",
       "spice_time_label": "time",
       "x_limit": [480e-6,500e-6],
-      "left_y_limit": [-20,32],
+      "left_y_limit": [0,30],
       "right_y_limit": [-0.2,1],
       "graphics": [
         {"spice_label": "Vsw","label": "Vsw", "belongsToRightYAxis": false, "linestyle": "-", "color": "r"}
@@ -68,7 +68,7 @@
     {
       "spice_filename": "SimulacionVoSinRipple",
       "is_one_direction": true,
-      "title": "Señal de salida con capacitor ideal",
+      "title": "Senal de salida con capacitor ideal",
       "x_label": "Tiempo (s)",
       "left_y_label": "Tension (V)",
       "right_y_label": "Corriente (A)",
