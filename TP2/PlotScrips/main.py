@@ -1,5 +1,6 @@
 from utils import read_spice_data, read_json_data
 import matplotlib.pyplot as plt
+from matplotlib.ticker import EngFormatter
 
 if __name__ == '__main__':
 
@@ -18,6 +19,10 @@ if __name__ == '__main__':
         ax1.set_ylabel(plot['left_y_label'])
         ax1.set_xlabel(plot['x_label'])
         ax1.set_ylim(tuple(plot['left_y_limit']))
+
+        formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  # U+2009
+        plt.gca().xaxis.set_major_formatter(formatter1)
+
         ax1.set_xlim(tuple(plot['x_limit']))
 
         plt.grid(True)
