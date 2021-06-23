@@ -1,0 +1,5 @@
+SimulacionAlazoAbierto = ["Vosc", "Vgate", "Vsecundario", "Vsw", "Vprimario", "Vsalida"]
+SimulacionCorrientes = ["Isecundario", "Iprimario"]
+SimulacionVoSinRipple = ["Vsalida"]
+SimulacionVswConSnubber = ["Vsw"]
+
