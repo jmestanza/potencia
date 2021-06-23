@@ -3,7 +3,6 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import EngFormatter
 
 if __name__ == '__main__':
-
     plots = read_json_data('plot_info.json')['plots']
     for plot in plots:
         filename = plot['spice_filename']
@@ -11,9 +10,10 @@ if __name__ == '__main__':
         data = read_spice_data(data_filename)
         time = data[plot['spice_time_label']]
 
+        plt.title(plot['title'])
+
         fig, ax1 = plt.subplots()
         fig.set_size_inches(14, 8)
-        plt.title(plot['title'])
 
         # left y axis
         ax1.set_ylabel(plot['left_y_label'])
@@ -31,11 +31,22 @@ if __name__ == '__main__':
         ax2.set_ylabel(plot['right_y_label'])  # we already handled the x-label with ax1
         ax2.set_ylim(tuple(plot['right_y_limit']))
 
+        lines = []
+        labels = []
         for graphic in plot['graphics']:
             curr_data = data[graphic['spice_label']]
-            if graphic['belongsToRightYAxis']:
-                ax1.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'])
+            if plot['is_one_direction']:
+                line = ax1.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
+                label = line.get_label()
             else:
-                ax2.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'])
-        plt.legend()
+                if graphic['belongsToRightYAxis']:
+                    line = ax1.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
+                    label = line.get_label()
+                else:
+                    line = ax2.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
+                    label = line.get_label()
+            lines.append(line)
+            labels.append(label)
+
+        plt.legend(lines, labels)
         plt.savefig('output/' + plot['title'])
