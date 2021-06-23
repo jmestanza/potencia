@@ -1,6 +1,7 @@
 from utils import read_spice_data, read_json_data
 import matplotlib.pyplot as plt
 from matplotlib.ticker import EngFormatter
+from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
 if __name__ == '__main__':
     plots = read_json_data('plot_info.json')['plots']
@@ -19,9 +20,13 @@ if __name__ == '__main__':
         ax1.set_ylabel(plot['left_y_label'])
         ax1.set_xlabel(plot['x_label'])
         ax1.set_ylim(tuple(plot['left_y_limit']))
+        plt.grid(which="major", alpha=0.8)
+        plt.grid(which="minor", alpha=0.3)
 
         formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  # U+2009
         plt.gca().xaxis.set_major_formatter(formatter1)
+        plt.gca().xaxis.set_minor_locator(AutoMinorLocator())
+        plt.gca().yaxis.set_minor_locator(AutoMinorLocator())
 
         ax1.set_xlim(tuple(plot['x_limit']))
 
