@@ -2,7 +2,6 @@
   "plots": [
     {
       "spice_filename": "SimulacionAlazoAbierto",
-      "is_one_direction": false,
       "title": "Ondas del primario",
       "x_label": "Tiempo (s)",
       "left_y_label": "Tension (V)",
@@ -19,7 +18,6 @@
     },
     {
       "spice_filename": "SimulacionAlazoAbierto",
-      "is_one_direction": false,
       "title": "Ondas del secundario",
       "x_label": "Tiempo (s)",
       "left_y_label": "Tension (V)",
@@ -36,7 +34,6 @@
     }, 
     {
       "spice_filename": "SimulacionAlazoAbierto",
-      "is_one_direction": true,
       "title": "Senal de disparo",
       "x_label": "Tiempo (s)",
       "left_y_label": "Tension (V)",
@@ -52,7 +49,6 @@
     },
     {
       "spice_filename": "SimulacionVswConSnubber",
-      "is_one_direction": true,
       "title": "v switch con snubber",
       "x_label": "Tiempo (s)",
       "left_y_label": "Tension (V)",
@@ -67,14 +63,13 @@
     },
     {
       "spice_filename": "SimulacionVoSinRipple",
-      "is_one_direction": true,
       "title": "Señal de salida con capacitor ideal",
       "x_label": "Tiempo (s)",
       "left_y_label": "Tension (V)",
       "right_y_label": "Corriente (A)",
       "spice_time_label": "time",
       "x_limit": [480e-6,500e-6],
-      "left_y_limit": [2,4],
+      "left_y_limit": [-20,32],
       "right_y_limit": [-0.2,1],
       "graphics": [
         {"spice_label": "Vsalida","label": "Vsalida", "belongsToRightYAxis": false, "linestyle": "-", "color": "r"}
