@@ -1,0 +1,82 @@
+{
+  "plots": [
+    {
+      "spice_filename": "SimulacionAlazoAbierto",
+      "title": "Ondas del primario",
+      "x_label": "Tiempo (s)",
+      "left_y_label": "Tension (V)",
+      "right_y_label": "Corriente (A)",
+      "spice_time_label": "time",
+      "x_limit": [1.93e-3,1.96e-3],
+      "left_y_limit": [-8,22],
+      "right_y_limit": [-0.5,0.5],
+      "graphics": [
+        {"spice_label": "Vsw","label": "Vsw", "belongsToRightYAxis": false, "linestyle": "-"},
+        {"spice_label": "Vprimario","label": "Vprimario", "belongsToRightYAxis": false, "linestyle": "--"},
+        {"spice_label": "Iprimario","label": "Iprimario", "belongsToRightYAxis": true, "linestyle": "-"}
+      ]
+    },
+    {
+      "spice_filename": "SimulacionAlazoAbierto",
+      "title": "Ondas del secundario",
+      "x_label": "Tiempo (s)",
+      "left_y_label": "Tension (V)",
+      "right_y_label": "Corriente (A)",
+      "spice_time_label": "time",
+      "x_limit": [1.93e-3,1.96e-3],
+      "left_y_limit": [-10,10],
+      "right_y_limit": [0,1],
+      "graphics": [
+        {"spice_label": "Vsecundario","label": "Vsecundario", "belongsToRightYAxis": false, "linestyle": "-"},
+        {"spice_label": "Vsalida","label": "Vsalida", "belongsToRightYAxis": false, "linestyle": "--"},
+        {"spice_label": "Isecundario","label": "Isecundario", "belongsToRightYAxis": true, "linestyle": "-"}
+      ]
+    }, 
+    {
+      "spice_filename": "SimulacionAlazoAbierto",
+      "title": "Señales de disparo",
+      "x_label": "Tiempo (s)",
+      "left_y_label": "Tension (V)",
+      "right_y_label": "Corriente (A)",
+      "spice_time_label": "time",
+      "x_limit": [1.93e-3,1.96e-3],
+      "left_y_limit": [-5,15],
+      "right_y_limit": [1000,1001],
+      "graphics": [
+        {"spice_label": "Vgate","label": "Vgate", "belongsToRightYAxis": false, "linestyle": "-"},
+        {"spice_label": "Vosc","label": "Vosc", "belongsToRightYAxis": false, "linestyle": "--"},
+        {"spice_label": "Vosc","label": "Vosc", "belongsToRightYAxis": true, "linestyle": "--"}
+      ]
+    },
+    {
+      "spice_filename": "SimulacionVswConSnubber",
+      "title": "Señal de disparo",
+      "x_label": "Tiempo (s)",
+      "left_y_label": "Tension (V)",
+      "right_y_label": "Corriente (A)",
+      "spice_time_label": "time",
+      "x_limit": [1.93e-3,1.96e-3],
+      "left_y_limit": [-20,30],
+      "right_y_limit": [1000,1001],
+      "graphics": [
+        {"spice_label": "Vsw","label": "Vsw", "belongsToRightYAxis": false, "linestyle": "-"},
+        {"spice_label": "Vsw","label": "Vsw", "belongsToRightYAxis": true, "linestyle": "-"}
+      ]
+    },
+    {
+      "spice_filename": "SimulacionVoSinRipple",
+      "title": "Señal de disparo",
+      "x_label": "Tiempo (s)",
+      "left_y_label": "Tension (V)",
+      "right_y_label": "Corriente (A)",
+      "spice_time_label": "time",
+      "x_limit": [1.93e-3,1.96e-3],
+      "left_y_limit": [-6,10],
+      "right_y_limit": [1000,1001],
+      "graphics": [
+        {"spice_label": "Vsalida","label": "Vsalida", "belongsToRightYAxis": false, "linestyle": "-"},
+        {"spice_label": "Vsalida","label": "Vsalida", "belongsToRightYAxis": true, "linestyle": "-"}
+      ]
+    }
+  ]
+}
