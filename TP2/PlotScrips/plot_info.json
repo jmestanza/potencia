@@ -1,4 +1,7 @@
 {
+  "major_tick_alpha": 0.8,
+  "minor_tick_alpha": 0.3,
+  "fig_size": [14, 8],
   "plots": [
     {
       "spice_filename": "SimulacionAlazoAbierto",

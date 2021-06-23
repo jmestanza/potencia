@@ -14,14 +14,14 @@ if __name__ == '__main__':
         plt.title(plot['title'])
 
         fig, ax1 = plt.subplots()
-        fig.set_size_inches(14, 8)
+        fig.set_size_inches(tuple(plot['fig_size']))
 
         # left y axis
         ax1.set_ylabel(plot['left_y_label'])
         ax1.set_xlabel(plot['x_label'])
         ax1.set_ylim(tuple(plot['left_y_limit']))
-        plt.grid(which="major", alpha=0.8)
-        plt.grid(which="minor", alpha=0.3)
+        plt.grid(which="major", alpha=plot['major_tick_alpha'])
+        plt.grid(which="minor", alpha=plot['minor_tick_alpha'])
 
         formatter1 = EngFormatter(places=2, sep="\N{THIN SPACE}")  # U+2009
         plt.gca().xaxis.set_major_formatter(formatter1)
@@ -40,16 +40,12 @@ if __name__ == '__main__':
         labels = []
         for graphic in plot['graphics']:
             curr_data = data[graphic['spice_label']]
-            if plot['is_one_direction']:
+            if not graphic['belongsToRightYAxis']: #
                 line = ax1.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
                 label = line.get_label()
             else:
-                if not graphic['belongsToRightYAxis']:
-                    line = ax1.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
-                    label = line.get_label()
-                else:
-                    line = ax2.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
-                    label = line.get_label()
+                line = ax2.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
+                label = line.get_label()
             lines.append(line)
             labels.append(label)
 
