@@ -1,7 +1,7 @@
 {
   "plots": [
     {
-      "spice_filename": "SimulacionALazoAbierto",
+      "spice_filename": "EjemploSpiceViejo",
       "is_one_direction": false,
       "title": "Primario",
       "x_label": "Tiempo (s)",
@@ -12,8 +12,8 @@
       "left_y_limit": [5,13],
       "right_y_limit": [-5,5],
       "graphics": [
-        {"spice_label": "V(osc)","label": "Vosc", "belongsToRightYAxis": false, "linestyle": "-", "color":  "b"},
-        {"spice_label": "V(pwm)","label": "Vpwm", "belongsToRightYAxis": true, "linestyle": "--", "color":  "g"}
+        {"spice_label": "V(d)","label": "Vd", "belongsToRightYAxis": false, "linestyle": "-", "color":  "b"},
+        {"spice_label": "V(g)","label": "Vg", "belongsToRightYAxis": false, "linestyle": "--", "color":  "r"}
       ]
     },
     {
@@ -22,14 +22,12 @@
       "title": "Titulo Ejemplo Viejo",
       "x_label": "Tiempo (s)",
       "left_y_label": "Tension (V)",
-      "right_y_label": "",
-      "right_y_limit": [-5,5],
       "spice_time_label": "time",
       "x_limit": [0,1000e-6],
       "left_y_limit": [-10,10],
       "graphics": [
-        {"spice_label": "V(d)","label": "Vd", "belongsToRightYAxis": false, "linestyle": "-", "color":  "b"},
-        {"spice_label": "V(g)","label": "Vg", "belongsToRightYAxis": false, "linestyle": "--", "color":  "r"}
+        {"spice_label": "V(d)","label": "Vd", "linestyle": "-", "color":  "b"},
+        {"spice_label": "V(g)","label": "Vg", "linestyle": "--", "color":  "r"}
       ]
     }
   ]

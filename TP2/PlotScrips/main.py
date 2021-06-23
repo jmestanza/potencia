@@ -26,10 +26,10 @@ if __name__ == '__main__':
         ax1.set_xlim(tuple(plot['x_limit']))
 
         plt.grid(True)
-
-        ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
-        ax2.set_ylabel(plot['right_y_label'])  # we already handled the x-label with ax1
-        ax2.set_ylim(tuple(plot['right_y_limit']))
+        if not plot['is_one_direction']:
+            ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+            ax2.set_ylabel(plot['right_y_label'])  # we already handled the x-label with ax1
+            ax2.set_ylim(tuple(plot['right_y_limit']))
 
         lines = []
         labels = []
