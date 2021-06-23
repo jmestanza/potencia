@@ -2,22 +2,23 @@ Circuit: * C:\potencia\TP1\Ejercicio1\Simulacion\Ejercicio1.asc
 
 Warning: Multiple definitions of model "aons66402" Type: Vdmos1
 Direct Newton iteration for .op point succeeded.
-Heightened Def Con from 0.000730786 to 0.000730786
+Heightened Def Con from 0.000236632 to 0.000236633
+Heightened Def Con from 0.000256623 to 0.000256623
 
-Date: Thu Apr 15 14:25:10 2021
-Total elapsed time: 34.542 seconds.
+Date: Sun Apr 18 12:05:10 2021
+Total elapsed time: 48.221 seconds.
 
 tnom = 27
 temp = 27
 method = modified trap
-totiter = 8372737
-traniter = 8372732
-tranpoints = 4006904
-accept = 4005019
-rejected = 1886
+totiter = 9669874
+traniter = 9669869
+tranpoints = 4019016
+accept = 4013606
+rejected = 5412
 matrix size = 12
 fillins = 1
 solver = Normal
-Matrix Compiler1:      37 opcodes  0.1/[0.1]/0.2
+Matrix Compiler1: 634 bytes object code size  0.1/0.1/[0.1]
 Matrix Compiler2: 888 bytes object code size  0.1/0.1/[0.1]
 

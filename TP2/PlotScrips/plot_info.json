@@ -1,0 +1,34 @@
+{
+  "plots": [
+    {
+      "spice_filename": "SimulacionALazoAbierto",
+      "title": "Primario",
+      "x_label": "Tiempo (s)",
+      "left_y_label": "Tension (V)",
+      "right_y_label": "Corriente (A)",
+      "spice_time_label": "time",
+      "x_limit": [0,4e-4],
+      "left_y_limit": [5,13],
+      "right_y_limit": [-5,5],
+      "graphics": [
+        {"spice_label": "V(osc)","label": "Vosc", "belongsToRightYAxis": false, "linestyle": "-"},
+        {"spice_label": "V(pwm)","label": "Vpwm", "belongsToRightYAxis": false, "linestyle": "--"}
+      ]
+    },
+    {
+      "spice_filename": "EjemploSpiceViejo",
+      "title": "Titulo Ejemplo Viejo",
+      "x_label": "Tiempo (s)",
+      "left_y_label": "Tension (V)",
+      "right_y_label": "Corriente (A)",
+      "spice_time_label": "time",
+      "x_limit": [0,4e-4],
+      "left_y_limit": [5,13],
+      "right_y_limit": [-5,5],
+      "graphics": [
+        {"spice_label": "V(d)","label": "Vd", "belongsToRightYAxis": false, "linestyle": "-"},
+        {"spice_label": "V(g)","label": "Vg", "belongsToRightYAxis": false, "linestyle": "--"}
+      ]
+    }
+  ]
+}
