@@ -1,7 +1,7 @@
 from utils import read_spice_data, read_json_data
 import matplotlib.pyplot as plt
 from matplotlib.ticker import EngFormatter
-from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
+from matplotlib.ticker import AutoMinorLocator
 
 if __name__ == '__main__':
     json_data = read_json_data('plot_info.json')
@@ -38,17 +38,12 @@ if __name__ == '__main__':
             ax2.set_ylim(tuple(plot['right_y_limit']))
 
         lines = []
-        labels = []
         for graphic in plot['graphics']:
             curr_data = data[graphic['spice_label']]
-            if not graphic['belongsToRightYAxis']: #
-                line = ax1.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
-                label = line.get_label()
+            if 'belongsToRightYAxis' not in graphic or not graphic['belongsToRightYAxis']:
+                lines.extend(ax1.plot(time, curr_data, **graphic['config']))
             else:
-                line = ax2.plot(time, curr_data, label=graphic['label'], linestyle=graphic['linestyle'], color=graphic['color'])[0]
-                label = line.get_label()
-            lines.append(line)
-            labels.append(label)
+                lines.extend(ax2.plot(time, curr_data, **graphic['config']))
 
-        plt.legend(lines, labels)
+        plt.legend(lines, [line.get_label() for line in lines])
         plt.savefig('output/' + plot['title'])
